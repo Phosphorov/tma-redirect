@@ -2,6 +2,7 @@
 User authentication and role management utilities
 """
 
+import os
 from typing import Dict, Optional
 from models.tracker_integration import EmployeeManager
 
@@ -18,6 +19,11 @@ class UserRoleManager:
         Get user role based on their Telegram ID from Yandex Tracker
         In a real implementation, this would search for an employee with this telegram ID
         """
+        # Check if this is the admin user
+        admin_telegram_id = os.getenv('ADMIN_TELEGRAM_ID')
+        if admin_telegram_id and str(telegram_id) == str(admin_telegram_id):
+            return 'admin'
+        
         # In a real implementation, we would search for an employee with this telegram ID
         # For now, returning a default role for demonstration
         # This is a simplified implementation - in reality, you'd search in Yandex Tracker
