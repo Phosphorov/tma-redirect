@@ -1,3 +1,0 @@
-"""
-Handlers package for the Telegram bot
-"""
